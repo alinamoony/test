@@ -11,6 +11,7 @@ console.log(screenPrice);
 console.log(percentage);
 console.log(fullPrice);
 console.log(responsive);
+console.log("This is kinda weird")
 
 
 
