@@ -13,3 +13,4 @@ console.log(fullPrice);
 console.log(responsive);
 
 
+
