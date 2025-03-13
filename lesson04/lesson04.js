@@ -51,10 +51,6 @@ let getServicePercentPrices = function(){
 }
 servicePercentPrice = getAllServicePrices();
 
-let getRollbackMessage = function(){
-
-}
-
 if (fullPrice > 50000) {
     console.log("Скидка 10%");
 } else if (fullPrice > 20000 && fullPrice < 50000) {
