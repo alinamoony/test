@@ -1,10 +1,5 @@
 let titleProject = prompt("Название проекта?")
-//console.log("Название проекта: ", titleProject)
-
-let getTitle = function(){
-    return titleProject[0].toUpperCase() + titleProject.slice(1).toLowerCase();
-}
-console.log("Название проекта: ", getTitle())
+console.log("Название проекта: ", titleProject)
 
 let screensValue = prompt("шаблонные, с уникальным дизайном, с анимациями")
 console.log("Нужно с чем: ", screensValue)
@@ -35,6 +30,10 @@ console.log("Скидка: ", servicePercentPrice)
 
 let allServicePrices;
 
+let getTitle = function(titleProject){
+    return titleProject[0].toUpperCase() + titleProject.slice(1).toLowerCase();
+}
+
 let getAllServicePrices = function() {
     return servicePrice1 + servicePrice2;
 }
@@ -45,18 +44,20 @@ function getFullPrice() {
 }
 fullPrice = getFullPrice(); 
 
-
 let getServicePercentPrices = function(){
     return fullPrice - servicePercentPrice;
 }
 servicePercentPrice = getAllServicePrices();
 
-if (fullPrice > 50000) {
-    console.log("Скидка 10%");
-} else if (fullPrice > 20000 && fullPrice < 50000) {
-    console.log("Скидка 5%");
-} else if (fullPrice < 20000 && fullPrice > 0) {
-    console.log("Нет скидки"); 
-} else if (fullPrice == 0 || fullPrice == 20000 || fullPrice == 50000) {
-    console.log("ничего");
+function getRollbackMessage(){
+    if (fullPrice > 50000) {
+        console.log("Скидка 10%");
+    } else if (fullPrice > 20000 && fullPrice < 50000) {
+        console.log("Скидка 5%");
+    } else if (fullPrice < 20000 && fullPrice > 0) {
+        console.log("Нет скидки"); 
+    } else if (fullPrice == 0 || fullPrice == 20000 || fullPrice == 50000) {
+        console.log("ничего");
+    }
 }
+getRollbackMessage();
