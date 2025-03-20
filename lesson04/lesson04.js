@@ -30,14 +30,17 @@ console.log("Скидка: ", servicePercentPrice)
 
 let allServicePrices;
 
-let getTitle = function(titleProject){
-    return titleProject[0].toUpperCase() + titleProject.slice(1).toLowerCase();
+let getTitle = function(word){
+    return word[0].toUpperCase() + word.slice(1).toLowerCase();
 }
+titleProject = getTitle(titleProject);
+console.log("Проект с заглавной буквы: ", titleProject);
 
 let getAllServicePrices = function() {
     return servicePrice1 + servicePrice2;
 }
 allServicePrices = getAllServicePrices();
+console.log("Сумма всех дополнительных услуг: ", allServicePrices);
 
 function getFullPrice() {
     return allServicePrices + screenPrice;
