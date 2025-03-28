@@ -1,59 +1,70 @@
-let titleProject = prompt("Название проекта?")
-console.log("Название проекта: ", titleProject)
-
-let screensValue = prompt("шаблонные, с уникальным дизайном, с анимациями")
-console.log("Нужно с чем: ", screensValue)
-
-let responsive = prompt("нужен ли респонсивный сайт?")
-console.log("Респонивность: ", responsive)
-
-let service1 = prompt("Какой сервис нужен?")
-console.log("Сервис: ", service1)
-
-let servicePrice1 = +prompt("Сколько это будет стоить?")
-console.log("Цена: ",servicePrice1)
-
-let service2 = prompt("Какой еще сервис тебе нужен?")
-console.log("Сервис: ", service2)
-
-let servicePrice2 = +prompt("Сколько будет стоить этот второй сервис?")
-console.log("Цена: ", servicePrice2)
-
-let screenPrice = 1500
-let fullPrice = screenPrice + servicePrice1 + servicePrice2
-console.log("Полная стоимость: ", fullPrice)
-
-let percentage = 10
-let servicePercentPrice = Math.round(fullPrice * (percentage / 100))
-console.log("Скидка: ", servicePercentPrice)
-
-
+let screenPrice = 1500; 
+let percentage = 10;
 let allServicePrices;
+let titleProject;
+let screensValue; 
+let responsive; 
+let service1;
+let service2;
 
-let getTitle = function(word){
-    return word[0].toUpperCase() + word.slice(1).toLowerCase();
-}
-titleProject = getTitle(titleProject);
-console.log("Проект с заглавной буквы: ", titleProject);
 
-let getAllServicePrices = function() {
-    return servicePrice1 + servicePrice2;
+
+const asking = function(){
+titleProject = prompt("Название проекта?")
+screensValue = prompt("шаблонные, с уникальным дизайном, с анимациями")
+responsive = prompt("нужен ли респонсивный сайт?")
 }
-allServicePrices = getAllServicePrices();
-console.log("Сумма всех дополнительных услуг: ", allServicePrices);
+
+
+
+let checkIsNumber = function(number){
+    return !isNaN(parseFloat(number)) && isFinite(number);
+}
+
+
+
+const getAllServicePrices = function() {
+
+    let totalPrice = 0;
+
+    for (i = 0; i < 2; i++){
+
+        if (i == 0) {
+            service1 = prompt("Какая нужна услуга?")
+        } else if (i == 1) {
+            service2 = prompt("Какая нужна услуга?")
+        }
+
+    let textFromPromt = '';
+
+    while (!checkIsNumber(textFromPromt) || textFromPromt == null || textFromPromt.trim() == "") {
+            textFromPromt = prompt(' Сколько стоит?')
+            }    
+        totalPrice += Number(textFromPromt);
+    }
+
+    return totalPrice; 
+
+    }
+
+
 
 function getFullPrice() {
     return allServicePrices + screenPrice;
 }
-fullPrice = getFullPrice(); 
 
 let getServicePercentPrices = function(){
-    return fullPrice - servicePercentPrice;
+    return fullPrice - (Math.round(fullPrice * (percentage / 100)));
 }
-servicePercentPrice = getAllServicePrices();
+
+const getTitle = function(word){
+    return word[0].toUpperCase() + word.slice(1).toLowerCase();
+}
+
+
 
 function getRollbackMessage(){
-    if (fullPrice > 50000) {
+    if (fullPricePrice > 50000) {
         console.log("Скидка 10%");
     } else if (fullPrice > 20000 && fullPrice < 50000) {
         console.log("Скидка 5%");
@@ -64,3 +75,26 @@ function getRollbackMessage(){
     }
 }
 getRollbackMessage();
+
+asking(); 
+getAllServicePrices();
+allServicePrices = getAllServicePrices();
+fullPrice = getFullPrice(); 
+servicePercentPrice = getAllServicePrices();
+titleProject = getTitle(titleProject);
+
+
+console.log("Название проекта: ", titleProject);
+console.log("Нужно с чем: ", screensValue);
+console.log("Респонивность: ", responsive);
+console.log("Сервис: ", service1);
+console.log("Цена: ",servicePrice1);
+console.log("Сервис: ", service2);
+console.log("Цена: ", servicePrice2);
+console.log("Итоговая цена: ", totalPrice);
+console.log("Проект с заглавной буквы: ", titleProject);
+console.log(Math.ceil(servicePercentPrice));
+
+
+
+
