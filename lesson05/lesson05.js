@@ -6,7 +6,7 @@ let screensValue;
 let responsive; 
 let service1;
 let service2;
-
+let fullPrice;
 
 
 const asking = function(){
@@ -64,7 +64,7 @@ const getTitle = function(word){
 
 
 function getRollbackMessage(){
-    if (fullPricePrice > 50000) {
+    if (fullPrice > 50000) {
         console.log("Скидка 10%");
     } else if (fullPrice > 20000 && fullPrice < 50000) {
         console.log("Скидка 5%");
@@ -77,10 +77,10 @@ function getRollbackMessage(){
 getRollbackMessage();
 
 asking(); 
-getAllServicePrices();
+//getAllServicePrices();
 allServicePrices = getAllServicePrices();
 fullPrice = getFullPrice(); 
-servicePercentPrice = getAllServicePrices();
+servicePercentPrice = getServicePercentPrices();
 titleProject = getTitle(titleProject);
 
 
@@ -88,13 +88,9 @@ console.log("Название проекта: ", titleProject);
 console.log("Нужно с чем: ", screensValue);
 console.log("Респонивность: ", responsive);
 console.log("Сервис: ", service1);
-console.log("Цена: ",servicePrice1);
+//onsole.log("Цена: ",servicePrice1);
 console.log("Сервис: ", service2);
-console.log("Цена: ", servicePrice2);
-console.log("Итоговая цена: ", totalPrice);
+//console.log("Цена: ", servicePrice2);
+//console.log("Итоговая цена: ", totalPrice);
 console.log("Проект с заглавной буквы: ", titleProject);
 console.log(Math.ceil(servicePercentPrice));
-
-
-
-
