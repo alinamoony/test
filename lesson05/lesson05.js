@@ -77,7 +77,6 @@ function getRollbackMessage(){
 getRollbackMessage();
 
 asking(); 
-//getAllServicePrices();
 allServicePrices = getAllServicePrices();
 fullPrice = getFullPrice(); 
 servicePercentPrice = getServicePercentPrices();
@@ -88,9 +87,6 @@ console.log("Название проекта: ", titleProject);
 console.log("Нужно с чем: ", screensValue);
 console.log("Респонивность: ", responsive);
 console.log("Сервис: ", service1);
-//onsole.log("Цена: ",servicePrice1);
 console.log("Сервис: ", service2);
-//console.log("Цена: ", servicePrice2);
-//console.log("Итоговая цена: ", totalPrice);
 console.log("Проект с заглавной буквы: ", titleProject);
 console.log(Math.ceil(servicePercentPrice));
