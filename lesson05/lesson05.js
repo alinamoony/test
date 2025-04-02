@@ -1,4 +1,4 @@
-let screenPrice = 1500; 
+let screenPrice; 
 let percentage = 10;
 let allServicePrices;
 let titleProject;
@@ -9,13 +9,6 @@ let service2;
 let fullPrice;
 
 
-const asking = function(){
-titleProject = prompt("Название проекта?")
-screensValue = prompt("шаблонные, с уникальным дизайном, с анимациями")
-responsive = prompt("нужен ли респонсивный сайт?")
-}
-
-
 
 let checkIsNumber = function(number){
     return !isNaN(parseFloat(number)) && isFinite(number);
@@ -23,29 +16,48 @@ let checkIsNumber = function(number){
 
 
 
+const asking = function(){
+titleProject = prompt("Название проекта?", "Калькулятор")
+screensValue = prompt("шаблонные, с уникальным дизайном, с анимациями", "с анимациями")
+
+screenPrice = prompt("Сколько это будет стоить?", 12000)
+
+while (!checkIsNumber(screenPrice) || screenPrice == null || screenPrice.trim() == "") {
+    screenPrice = prompt('Сколько это будет стоить?', 12000)
+    }    
+screenPrice = Number(screenPrice)
+
+responsive = prompt("нужен ли респонсивный сайт?", "нужен")
+
+}
+
+
+
+
 const getAllServicePrices = function() {
 
-    let totalPrice = 0;
+    let sum = 0;
 
-    for (i = 0; i < 2; i++){
+    for (let i = 0; i < 2; i++){
 
         if (i == 0) {
-            service1 = prompt("Какая нужна услуга?")
+            service1 = prompt("Какая нужна услуга?", "Услуга 1")
         } else if (i == 1) {
-            service2 = prompt("Какая нужна услуга?")
+            service2 = prompt("Какая нужна услуга?", "Услуга 2")
         }
 
     let textFromPromt = '';
 
     while (!checkIsNumber(textFromPromt) || textFromPromt == null || textFromPromt.trim() == "") {
-            textFromPromt = prompt(' Сколько стоит?')
-            }    
-        totalPrice += Number(textFromPromt);
-    }
+        textFromPromt = prompt('Сколько стоит?')
+        }    
 
-    return totalPrice; 
+    sum += Number(textFromPromt);
 
     }
+
+    return sum;
+}
 
 
 
@@ -61,20 +73,17 @@ const getTitle = function(word){
     return word[0].toUpperCase() + word.slice(1).toLowerCase();
 }
 
-
-
-function getRollbackMessage(){
-    if (fullPrice > 50000) {
-        console.log("Скидка 10%");
-    } else if (fullPrice > 20000 && fullPrice < 50000) {
-        console.log("Скидка 5%");
-    } else if (fullPrice < 20000 && fullPrice > 0) {
-        console.log("Нет скидки"); 
-    } else if (fullPrice == 0 || fullPrice == 20000 || fullPrice == 50000) {
-        console.log("ничего");
+const getPercentageMessage = function(price){
+    if (price > 50000) {
+        return "Скидка 10%"
+    } else if (price > 20000 && price < 50000) {
+        return "Скидка 5%"
+    } else if (price < 20000 && price > 0) {
+        return "Нет скидки"
+    } else if (price == 0 || price == 20000 || price == 50000) {
+        return "Проверка на строгое равенство"
     }
 }
-getRollbackMessage();
 
 asking(); 
 allServicePrices = getAllServicePrices();
@@ -83,10 +92,8 @@ servicePercentPrice = getServicePercentPrices();
 titleProject = getTitle(titleProject);
 
 
-console.log("Название проекта: ", titleProject);
-console.log("Нужно с чем: ", screensValue);
-console.log("Респонивность: ", responsive);
-console.log("Сервис: ", service1);
-console.log("Сервис: ", service2);
-console.log("Проект с заглавной буквы: ", titleProject);
+console.log(titleProject);
+console.log(allServicePrices);
+console.log(fullPrice);
 console.log(Math.ceil(servicePercentPrice));
+console.log(getPercentageMessage(fullPrice)); 
